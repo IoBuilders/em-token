@@ -16,7 +16,7 @@ Please refer to the [ERC-20 Token Standard](https://eips.ethereum.org/EIPS/eip-2
 
 An extension to the ERC-20 standard token that allows tokens to be put on hold. This guarantees a future transfer and makes the held tokens unavailable for transfer in the mean time. Holds are similar to escrows in that are firm and lead to final settlement.
 
-Please refer to [IHoldableToken.sol](contracts/IHoldableToken.sol) for the exact specification.
+Please refer to [IHoldable.sol](contracts/IHoldable.sol) for the exact specification.
 
 #### balanceOf
 
