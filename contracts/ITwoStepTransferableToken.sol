@@ -1,7 +1,5 @@
 pragma solidity ^0.5.0;
 
-import "./IHoldableToken.sol";
-
 interface ITwoStepTransferableToken {
     /**
      * @notice Orders a clearable transfer on behalf of the msg.sender in favor of `target`. A notary is responsible to either release or revoke the transfer.
