@@ -1,6 +1,6 @@
 {
   "name": "emoney-token",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The E-Money Standard Token aims to enable the issuance of regulated electronic money on blockchain networks, and its practical usage in real financial applications.",
   "repository": {
     "type": "git",
