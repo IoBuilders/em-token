@@ -9,7 +9,7 @@ This project is the first implementation of electronic money on a Blockchain. Th
 The contracts and the corresponding build files can be downloaded with:
 
 ```
-npm install emoney-token
+npm install emoney-token --only=production
 ```
 
 ## Interacting with the token

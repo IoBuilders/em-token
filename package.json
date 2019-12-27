@@ -22,7 +22,7 @@
     "url": "https://github.com/IoBuilders/em-token/issues"
   },
   "homepage": "https://github.com/IoBuilders/em-token#readme",
-  "dependencies": {
+  "devDependencies": {
     "solc": "0.5.15",
     "truffle": "^5.1.5"
   },
