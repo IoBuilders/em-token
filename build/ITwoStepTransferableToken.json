@@ -1,0 +1,2212 @@
+{
+  "contractName": "ITwoStepTransferableToken",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        }
+      ],
+      "name": "TransferIdExists",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "origin",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "expiration",
+          "type": "uint256"
+        }
+      ],
+      "name": "TransferOrdered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "notary",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "origin",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "TransferReleased",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "notary",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "origin",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum IHoldable.HoldStatusCode",
+          "name": "status",
+          "type": "uint8"
+        }
+      ],
+      "name": "TransferRevoked",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "orderTransfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        }
+      ],
+      "name": "releaseTransfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        }
+      ],
+      "name": "revokeTransferByExpiration",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        }
+      ],
+      "name": "revokeTransferByNotary",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "transferId",
+          "type": "string"
+        }
+      ],
+      "name": "revokeTransferByTarget",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.15+commit.6a57276f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"}],\"name\":\"TransferIdExists\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"origin\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"expiration\",\"type\":\"uint256\"}],\"name\":\"TransferOrdered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"notary\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"origin\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TransferReleased\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"notary\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"origin\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"enum IHoldable.HoldStatusCode\",\"name\":\"status\",\"type\":\"uint8\"}],\"name\":\"TransferRevoked\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"target\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"orderTransfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"}],\"name\":\"releaseTransfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"}],\"name\":\"revokeTransferByExpiration\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"}],\"name\":\"revokeTransferByNotary\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"transferId\",\"type\":\"string\"}],\"name\":\"revokeTransferByTarget\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"orderTransfer(string,address,uint256)\":{\"params\":{\"amount\":\"The amount to be transferred.\",\"target\":\"The address of the payee, to whom the tokens are to be paid if released\",\"transferId\":\"The unique ID to identify the clearable transfer\"}},\"releaseTransfer(string)\":{\"params\":{\"transferId\":\"The unique ID to identify the clearable transfer\"}},\"revokeTransferByExpiration(string)\":{\"params\":{\"transferId\":\"The unique ID to identify the clearable transfer\"}},\"revokeTransferByNotary(string)\":{\"params\":{\"transferId\":\"The unique ID to identify the clearable transfer\"}},\"revokeTransferByTarget(string)\":{\"params\":{\"transferId\":\"The unique ID to identify the clearable transfer\"}}}},\"userdoc\":{\"methods\":{\"orderTransfer(string,address,uint256)\":{\"notice\":\"Orders a clearable transfer on behalf of the msg.sender in favor of `target`. A notary is responsible to either release or revoke the transfer.\"},\"releaseTransfer(string)\":{\"notice\":\"Releases a clearable transfer, which means that the tokens are transferred from the payer to the payee. Only a notary can successfully execute this action.\"},\"revokeTransferByExpiration(string)\":{\"notice\":\"Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only once that the hold has expired can this action successfully be executed.\"},\"revokeTransferByNotary(string)\":{\"notice\":\"Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the assigned notary can successfully execute this action.\"},\"revokeTransferByTarget(string)\":{\"notice\":\"Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the target of the transfer can successfully execute this action.\"}}}},\"settings\":{\"compilationTarget\":{\"/home/daniel/projects/em-token-public/contracts/ITwoStepTransferableToken.sol\":\"ITwoStepTransferableToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":1},\"remappings\":[]},\"sources\":{\"/home/daniel/projects/em-token-public/contracts/IHoldable.sol\":{\"keccak256\":\"0x4f5b7eb9f667e833503b9cf005a17b7a9bf2c8a15fe2bbc3fe868df939a29404\",\"urls\":[\"bzz-raw://395b1aa34f012937ebc22dd83953bf004d9119d88cf52edb5271597ffdc9f99d\",\"dweb:/ipfs/QmcF3y4sNay8hdbewYKApgYnGGBTGYi2DM41PTuUfLGSGJ\"]},\"/home/daniel/projects/em-token-public/contracts/ITwoStepTransferableToken.sol\":{\"keccak256\":\"0x952bbd19b9cc23b4dad6fb3a5f20fa6fa35461dd74ca36b69e89fa906b45529f\",\"urls\":[\"bzz-raw://8ea57cfd18c3ba06394ba27a8080d26b007c2de98160cf24f029be850a1c0456\",\"dweb:/ipfs/QmQvWj9ZKAzaW8sFVTptqG22iu6MsSBr2hjUunvmr4Qm3V\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"./IHoldable.sol\";\n\n\ninterface ITwoStepTransferableToken {\n    /**\n     * @notice Orders a clearable transfer on behalf of the msg.sender in favor of `target`. A notary is responsible to either release or revoke the transfer.\n     * @param transferId The unique ID to identify the clearable transfer\n     * @param target The address of the payee, to whom the tokens are to be paid if released\n     * @param amount The amount to be transferred.\n     */\n    function orderTransfer(string calldata transferId, address target, uint256 amount) external returns (bool);\n\n    /**\n     * @notice Releases a clearable transfer, which means that the tokens are transferred from the payer to the payee. Only a notary can successfully execute this action.\n     * @param transferId The unique ID to identify the clearable transfer\n     */\n    function releaseTransfer(string calldata transferId) external returns (bool);\n\n    /**\n     * @notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only once that the hold has expired can this action successfully be executed.\n     * @param transferId The unique ID to identify the clearable transfer\n     */\n    function revokeTransferByExpiration(string calldata transferId) external;\n\n    /**\n     * @notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the assigned notary can successfully execute this action.\n     * @param transferId The unique ID to identify the clearable transfer\n     */\n    function revokeTransferByNotary(string calldata transferId) external;\n\n    /**\n     * @notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the target of the transfer can successfully execute this action.\n     * @param transferId The unique ID to identify the clearable transfer\n     */\n    function revokeTransferByTarget(string calldata transferId) external;\n\n    /**\n     * @notice Is emitted when a clearable transfer is ordered.\n     */\n    event TransferOrdered(\n        string transferId,\n        address indexed origin,\n        address indexed target,\n        uint256 amount,\n        uint256 expiration\n    );\n\n    /**\n     * @notice Is emitted when a clearable transfer is released.\n     */\n    event TransferReleased(\n        string transferId,\n        address notary,\n        address indexed origin,\n        address indexed target,\n        uint256 amount\n    );\n\n    /**\n     * @notice Is emitted when a clearable transfer is revoked.\n     */\n    event TransferRevoked(\n        string transferId,\n        address notary,\n        address indexed origin,\n        address indexed target,\n        uint256 amount,\n        IHoldable.HoldStatusCode status\n    );\n\n    /**\n     * @notice Is emitted when a clearable transfer with an already existing transfer id is tried to order\n     */\n    event TransferIdExists(string transferId);\n}\n",
+  "sourcePath": "/home/daniel/projects/em-token-public/contracts/ITwoStepTransferableToken.sol",
+  "ast": {
+    "absolutePath": "/home/daniel/projects/em-token-public/contracts/ITwoStepTransferableToken.sol",
+    "exportedSymbols": {
+      "ITwoStepTransferableToken": [
+        541
+      ]
+    },
+    "id": 542,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 464,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "absolutePath": "/home/daniel/projects/em-token-public/contracts/IHoldable.sol",
+        "file": "./IHoldable.sol",
+        "id": 465,
+        "nodeType": "ImportDirective",
+        "scope": 542,
+        "sourceUnit": 397,
+        "src": "25:25:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 541,
+        "linearizedBaseContracts": [
+          541
+        ],
+        "name": "ITwoStepTransferableToken",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Orders a clearable transfer on behalf of the msg.sender in favor of `target`. A notary is responsible to either release or revoke the transfer.\n@param transferId The unique ID to identify the clearable transfer\n@param target The address of the payee, to whom the tokens are to be paid if released\n@param amount The amount to be transferred.",
+            "id": 476,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "orderTransfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 472,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 467,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "511:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 466,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "511:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 469,
+                  "name": "target",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "539:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 468,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "539:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 471,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "555:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 470,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "555:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "510:60:4"
+            },
+            "returnParameters": {
+              "id": 475,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 474,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "589:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 473,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "589:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "588:6:4"
+            },
+            "scope": 541,
+            "src": "488:107:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Releases a clearable transfer, which means that the tokens are transferred from the payer to the payee. Only a notary can successfully execute this action.\n@param transferId The unique ID to identify the clearable transfer",
+            "id": 483,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "releaseTransfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 479,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 478,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 483,
+                  "src": "887:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 477,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "887:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "886:28:4"
+            },
+            "returnParameters": {
+              "id": 482,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 481,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 483,
+                  "src": "933:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 480,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "933:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "932:6:4"
+            },
+            "scope": 541,
+            "src": "862:77:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only once that the hold has expired can this action successfully be executed.\n@param transferId The unique ID to identify the clearable transfer",
+            "id": 488,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "revokeTransferByExpiration",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 486,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 485,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 488,
+                  "src": "1292:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 484,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1292:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1291:28:4"
+            },
+            "returnParameters": {
+              "id": 487,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1328:0:4"
+            },
+            "scope": 541,
+            "src": "1256:73:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the assigned notary can successfully execute this action.\n@param transferId The unique ID to identify the clearable transfer",
+            "id": 493,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "revokeTransferByNotary",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 491,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 490,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 493,
+                  "src": "1663:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 489,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1663:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1662:28:4"
+            },
+            "returnParameters": {
+              "id": 492,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1699:0:4"
+            },
+            "scope": 541,
+            "src": "1631:69:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the target of the transfer can successfully execute this action.\n@param transferId The unique ID to identify the clearable transfer",
+            "id": 498,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "revokeTransferByTarget",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 496,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 495,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 498,
+                  "src": "2041:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 494,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2041:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2040:28:4"
+            },
+            "returnParameters": {
+              "id": 497,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2077:0:4"
+            },
+            "scope": 541,
+            "src": "2009:69:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@notice Is emitted when a clearable transfer is ordered.",
+            "id": 510,
+            "name": "TransferOrdered",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 509,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 500,
+                  "indexed": false,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2195:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 499,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2195:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 502,
+                  "indexed": true,
+                  "name": "origin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2222:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 501,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2222:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 504,
+                  "indexed": true,
+                  "name": "target",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2254:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 503,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2254:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 506,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2286:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 505,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2286:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 508,
+                  "indexed": false,
+                  "name": "expiration",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2310:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 507,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2310:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2185:149:4"
+            },
+            "src": "2164:171:4"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@notice Is emitted when a clearable transfer is released.",
+            "id": 522,
+            "name": "TransferReleased",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 521,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 512,
+                  "indexed": false,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2454:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 511,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2454:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 514,
+                  "indexed": false,
+                  "name": "notary",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2481:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 513,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2481:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 516,
+                  "indexed": true,
+                  "name": "origin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2505:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 515,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2505:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 518,
+                  "indexed": true,
+                  "name": "target",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2537:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 517,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2537:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 520,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2569:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 519,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2569:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2444:145:4"
+            },
+            "src": "2422:168:4"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@notice Is emitted when a clearable transfer is revoked.",
+            "id": 536,
+            "name": "TransferRevoked",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 535,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 524,
+                  "indexed": false,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2707:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 523,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2707:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 526,
+                  "indexed": false,
+                  "name": "notary",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2734:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 525,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2734:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 528,
+                  "indexed": true,
+                  "name": "origin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2758:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 527,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2758:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 530,
+                  "indexed": true,
+                  "name": "target",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2790:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 529,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2790:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 532,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2822:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 531,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2822:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 534,
+                  "indexed": false,
+                  "name": "status",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2846:31:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_HoldStatusCode_$93",
+                    "typeString": "enum IHoldable.HoldStatusCode"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 533,
+                    "name": "IHoldable.HoldStatusCode",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 93,
+                    "src": "2846:24:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_HoldStatusCode_$93",
+                      "typeString": "enum IHoldable.HoldStatusCode"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2697:186:4"
+            },
+            "src": "2676:208:4"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@notice Is emitted when a clearable transfer with an already existing transfer id is tried to order",
+            "id": 540,
+            "name": "TransferIdExists",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 539,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 538,
+                  "indexed": false,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 540,
+                  "src": "3036:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 537,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3036:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3035:19:4"
+            },
+            "src": "3013:42:4"
+          }
+        ],
+        "scope": 542,
+        "src": "53:3004:4"
+      }
+    ],
+    "src": "0:3058:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/daniel/projects/em-token-public/contracts/ITwoStepTransferableToken.sol",
+    "exportedSymbols": {
+      "ITwoStepTransferableToken": [
+        541
+      ]
+    },
+    "id": 542,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 464,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "absolutePath": "/home/daniel/projects/em-token-public/contracts/IHoldable.sol",
+        "file": "./IHoldable.sol",
+        "id": 465,
+        "nodeType": "ImportDirective",
+        "scope": 542,
+        "sourceUnit": 397,
+        "src": "25:25:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 541,
+        "linearizedBaseContracts": [
+          541
+        ],
+        "name": "ITwoStepTransferableToken",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@notice Orders a clearable transfer on behalf of the msg.sender in favor of `target`. A notary is responsible to either release or revoke the transfer.\n@param transferId The unique ID to identify the clearable transfer\n@param target The address of the payee, to whom the tokens are to be paid if released\n@param amount The amount to be transferred.",
+            "id": 476,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "orderTransfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 472,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 467,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "511:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 466,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "511:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 469,
+                  "name": "target",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "539:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 468,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "539:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 471,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "555:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 470,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "555:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "510:60:4"
+            },
+            "returnParameters": {
+              "id": 475,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 474,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 476,
+                  "src": "589:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 473,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "589:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "588:6:4"
+            },
+            "scope": 541,
+            "src": "488:107:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Releases a clearable transfer, which means that the tokens are transferred from the payer to the payee. Only a notary can successfully execute this action.\n@param transferId The unique ID to identify the clearable transfer",
+            "id": 483,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "releaseTransfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 479,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 478,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 483,
+                  "src": "887:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 477,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "887:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "886:28:4"
+            },
+            "returnParameters": {
+              "id": 482,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 481,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 483,
+                  "src": "933:4:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 480,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "933:4:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "932:6:4"
+            },
+            "scope": 541,
+            "src": "862:77:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only once that the hold has expired can this action successfully be executed.\n@param transferId The unique ID to identify the clearable transfer",
+            "id": 488,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "revokeTransferByExpiration",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 486,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 485,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 488,
+                  "src": "1292:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 484,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1292:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1291:28:4"
+            },
+            "returnParameters": {
+              "id": 487,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1328:0:4"
+            },
+            "scope": 541,
+            "src": "1256:73:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the assigned notary can successfully execute this action.\n@param transferId The unique ID to identify the clearable transfer",
+            "id": 493,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "revokeTransferByNotary",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 491,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 490,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 493,
+                  "src": "1663:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 489,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1663:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1662:28:4"
+            },
+            "returnParameters": {
+              "id": 492,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1699:0:4"
+            },
+            "scope": 541,
+            "src": "1631:69:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@notice Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the target of the transfer can successfully execute this action.\n@param transferId The unique ID to identify the clearable transfer",
+            "id": 498,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "revokeTransferByTarget",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 496,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 495,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 498,
+                  "src": "2041:26:4",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 494,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2041:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2040:28:4"
+            },
+            "returnParameters": {
+              "id": 497,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2077:0:4"
+            },
+            "scope": 541,
+            "src": "2009:69:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@notice Is emitted when a clearable transfer is ordered.",
+            "id": 510,
+            "name": "TransferOrdered",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 509,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 500,
+                  "indexed": false,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2195:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 499,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2195:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 502,
+                  "indexed": true,
+                  "name": "origin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2222:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 501,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2222:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 504,
+                  "indexed": true,
+                  "name": "target",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2254:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 503,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2254:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 506,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2286:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 505,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2286:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 508,
+                  "indexed": false,
+                  "name": "expiration",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 510,
+                  "src": "2310:18:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 507,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2310:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2185:149:4"
+            },
+            "src": "2164:171:4"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@notice Is emitted when a clearable transfer is released.",
+            "id": 522,
+            "name": "TransferReleased",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 521,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 512,
+                  "indexed": false,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2454:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 511,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2454:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 514,
+                  "indexed": false,
+                  "name": "notary",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2481:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 513,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2481:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 516,
+                  "indexed": true,
+                  "name": "origin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2505:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 515,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2505:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 518,
+                  "indexed": true,
+                  "name": "target",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2537:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 517,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2537:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 520,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 522,
+                  "src": "2569:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 519,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2569:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2444:145:4"
+            },
+            "src": "2422:168:4"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@notice Is emitted when a clearable transfer is revoked.",
+            "id": 536,
+            "name": "TransferRevoked",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 535,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 524,
+                  "indexed": false,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2707:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 523,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2707:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 526,
+                  "indexed": false,
+                  "name": "notary",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2734:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 525,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2734:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 528,
+                  "indexed": true,
+                  "name": "origin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2758:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 527,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2758:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 530,
+                  "indexed": true,
+                  "name": "target",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2790:22:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 529,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2790:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 532,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2822:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 531,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2822:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 534,
+                  "indexed": false,
+                  "name": "status",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 536,
+                  "src": "2846:31:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_HoldStatusCode_$93",
+                    "typeString": "enum IHoldable.HoldStatusCode"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 533,
+                    "name": "IHoldable.HoldStatusCode",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 93,
+                    "src": "2846:24:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_HoldStatusCode_$93",
+                      "typeString": "enum IHoldable.HoldStatusCode"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2697:186:4"
+            },
+            "src": "2676:208:4"
+          },
+          {
+            "anonymous": false,
+            "documentation": "@notice Is emitted when a clearable transfer with an already existing transfer id is tried to order",
+            "id": 540,
+            "name": "TransferIdExists",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 539,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 538,
+                  "indexed": false,
+                  "name": "transferId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 540,
+                  "src": "3036:17:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 537,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3036:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3035:19:4"
+            },
+            "src": "3013:42:4"
+          }
+        ],
+        "scope": 542,
+        "src": "53:3004:4"
+      }
+    ],
+    "src": "0:3058:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.15+commit.6a57276f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.20",
+  "updatedAt": "2019-12-27T15:08:12.554Z",
+  "devdoc": {
+    "methods": {
+      "orderTransfer(string,address,uint256)": {
+        "params": {
+          "amount": "The amount to be transferred.",
+          "target": "The address of the payee, to whom the tokens are to be paid if released",
+          "transferId": "The unique ID to identify the clearable transfer"
+        }
+      },
+      "releaseTransfer(string)": {
+        "params": {
+          "transferId": "The unique ID to identify the clearable transfer"
+        }
+      },
+      "revokeTransferByExpiration(string)": {
+        "params": {
+          "transferId": "The unique ID to identify the clearable transfer"
+        }
+      },
+      "revokeTransferByNotary(string)": {
+        "params": {
+          "transferId": "The unique ID to identify the clearable transfer"
+        }
+      },
+      "revokeTransferByTarget(string)": {
+        "params": {
+          "transferId": "The unique ID to identify the clearable transfer"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "orderTransfer(string,address,uint256)": {
+        "notice": "Orders a clearable transfer on behalf of the msg.sender in favor of `target`. A notary is responsible to either release or revoke the transfer."
+      },
+      "releaseTransfer(string)": {
+        "notice": "Releases a clearable transfer, which means that the tokens are transferred from the payer to the payee. Only a notary can successfully execute this action."
+      },
+      "revokeTransferByExpiration(string)": {
+        "notice": "Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only once that the hold has expired can this action successfully be executed."
+      },
+      "revokeTransferByNotary(string)": {
+        "notice": "Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the assigned notary can successfully execute this action."
+      },
+      "revokeTransferByTarget(string)": {
+        "notice": "Revokes a clearable transfer, which means that the amount that is held is available again to the payer and no transfer is done. Only the target of the transfer can successfully execute this action."
+      }
+    }
+  }
+}

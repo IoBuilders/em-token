@@ -1,5 +1,8 @@
 pragma solidity ^0.5.0;
 
+import "./IHoldable.sol";
+
+
 interface ITwoStepTransferableToken {
     /**
      * @notice Orders a clearable transfer on behalf of the msg.sender in favor of `target`. A notary is responsible to either release or revoke the transfer.
@@ -64,7 +67,7 @@ interface ITwoStepTransferableToken {
         address indexed origin,
         address indexed target,
         uint256 amount,
-        IHoldableToken.Status status
+        IHoldable.HoldStatusCode status
     );
 
     /**

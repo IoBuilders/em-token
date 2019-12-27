@@ -1,0 +1,33 @@
+{
+  "name": "emoney-token",
+  "version": "1.0.0",
+  "description": "The E-Money Standard Token aims to enable the issuance of regulated electronic money on blockchain networks, and its practical usage in real financial applications.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IoBuilders/em-token.git"
+  },
+  "keywords": [
+    "eip 2020",
+    "ethereum",
+    "solidity",
+    "token",
+    "emoney"
+  ],
+  "scripts": {
+    "compile": "truffle compile --all"
+  },
+  "author": "tech@io.builders",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/IoBuilders/em-token/issues"
+  },
+  "homepage": "https://github.com/IoBuilders/em-token#readme",
+  "dependencies": {
+    "solc": "0.5.15",
+    "truffle": "^5.1.5"
+  },
+  "files": [
+    "build",
+    "contracts"
+  ]
+}

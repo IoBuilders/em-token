@@ -4,6 +4,14 @@ An e-money, bank and central bank money issued token based on [ERC-20](https://g
 
 This project is the first implementation of electronic money on a Blockchain. The learnings that were made during its creation were used to propose [ERC-2020 - The E-Money Token Standard](https://emoneytokenstandard.org/). Currently there are differences between the interfaces used here and the proposed standard. The interfaces of the standard will be adapted in a future release.
 
+## Installation
+
+The contracts and the corresponding build files can be downloaded with:
+
+```
+npm install emoney-token
+```
+
 ## Interacting with the token
 
 The abstract contract [EmoneyToken](contracts/EmoneyToken.sol) can be used to interact with the token. It consists of the following interfaces:
@@ -39,3 +47,11 @@ Please refer to [ITwoStepTransferableToken.sol](contracts/ITwoStepTransferableTo
 [1] https://en.wikipedia.org/wiki/Clearing_(finance)
 
 [Clearing-Wikipedia]: https://en.wikipedia.org/wiki/Clearing_(finance)
+
+### Compiling
+
+To compile the interfaces and the abstract contract, please execute:
+```sh
+npm install
+npm run compile
+```
