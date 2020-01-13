@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/IoBuilders/em-token#readme",
   "devDependencies": {
-    "solc": "0.5.15",
-    "truffle": "^5.1.5"
+    "solc": "0.5.16",
+    "truffle": "^5.1.8"
   },
   "files": [
     "build",
