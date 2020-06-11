@@ -1,6 +1,6 @@
 {
   "name": "emoney-token",
-  "version": "1.1.0",
+  "version": "1.28.7",
   "description": "The E-Money Standard Token aims to enable the issuance of regulated electronic money on blockchain networks, and its practical usage in real financial applications.",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
     "emoney"
   ],
   "scripts": {
-    "compile": "truffle compile --all"
+    "compile": "npx truffle compile --all"
   },
   "author": "tech@io.builders",
   "license": "Apache-2.0",
@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/IoBuilders/em-token#readme",
   "devDependencies": {
-    "solc": "0.5.16",
-    "truffle": "^5.1.8"
+    "solc": "0.5.17",
+    "truffle": "^5.1.29"
   },
   "files": [
     "build",
