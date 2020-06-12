@@ -43,98 +43,6 @@ interface ICrossLedgerLink {
     external
     returns (bytes32 messageHash);
 
-
-    /**
-     * @notice Accepts the cross transfer. Transits state
-     * must be crossChainTransferOperator
-     *
-     * @param _operationId The transfer operation id.
-     * @param _messageHash acceptTransfer messageHash
-     * @param _hashLock The execution hashLock
-     *
-     * @return acceptMessageHash
-     */
-    function acceptTransfer(string calldata _operationId, bytes32 _messageHash, bytes32 _hashLock)
-    external
-    returns (bytes32 acceptMessageHash);
-
-    /**
-     * @notice Acknowledges the cross transfer on the destination chain. Transits state
-     * must be crossChainTransferOperator
-     *
-     * @param _operationId The transfer operation id.
-     * @param _currency ISO currency code
-     * @param _amount  amount that will be transferred
-     * @param _messageHash acceptTransfer messageHash
-     * @param _hashLock The execution hashLock
-     * @param _from The address in the origin chain where the same currency
-     *              tokens will be burned.
-     * @param _to The address in the destination chain where the same currency
-     *            tokens will be minted.
-     * @param _originChainId id of the origin chain
-     *
-     * @return acknowledgeMessageHash
-     */
-    function acknowledgeTransfer(
-        string calldata _operationId,
-        string calldata _currency,
-        uint256 _amount,
-        bytes32 _messageHash,
-        bytes32 _hashLock,
-        address _from,
-        address _to,
-        uint256 _originChainId
-    )
-    external
-    returns (bytes32 acknowledgeMessageHash);
-
-    /**
-     * @notice Revokes the cross transfer with a reason, and unholds tokens. Transits state
-     * must be crossChainTransferOperator
-     * must be holdoperator to unhold de tokens
-     *
-     * @param _operationId The transfer operation id.
-     * @param _messageHash orderTransfer messageHash
-     * @param _reason The non acceptance reason
-     */
-    function revokeTransfer(string calldata _operationId, bytes32 _messageHash, uint8 _reason) external;
-
-
-    /**
-     * @notice Initiate the cross transfer on destination chain . Mint, transfer, Transits state
-     * must be crossChainTransferOperator
-     * must be transferOperator
-     * must be minter
-     * @param _operationId The transfer operation id.
-     * @param _messageHash parent message hash
-     * @param _unlockSecret secret to unlock
-     *
-     * @return transferInMessageHash
-     */
-    function executeTransferIn(
-        string calldata _operationId,
-        bytes32 _messageHash,
-        uint256 _originChainId,
-        bytes32 _unlockSecret
-    )
-    external
-    returns (bytes32 transferInMessageHash);
-
-    /**
-     * @notice Completes the cross transfer, executing the hold, and burning the token on origin. Transits state
-     * must be crossChainTransferOperator
-     * must be notary of the previous hold
-     * must be burner to burn de tokens
-     * @param _operationId The transfer operation id.
-     * @param _messageHash parent message hash
-     * @param _unlockSecret secret to unlock
-     *
-     * @return transferOutMessageHash
-     */
-    function executeTransferOut(string calldata _operationId, bytes32 _messageHash, bytes32 _unlockSecret)
-    external
-    returns (bytes32 transferOutMessageHash);
-
     /**
      * @notice Returns is a given address has cross ledger operator rights.
      *
@@ -263,8 +171,6 @@ interface ICrossLedgerLink {
         address transferOutOperator,
         bytes32 unlockSecret
     );
-    event CrossLedgerOperatorActivated(address indexed operator, address indexed account);
-    event CrossLedgerOperatorDeactivated(address indexed operator, address indexed account);
     event CrossLedgerChainActivated(uint256 indexed chainId, address indexed account);
     event CrossLedgerChainDeactivated(uint256 indexed chainId, address indexed account);
     event CrossLedgerCurrencyActivated(string currency, uint256 indexed chainId, address indexed account);
