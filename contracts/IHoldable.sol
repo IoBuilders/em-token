@@ -47,6 +47,7 @@ interface IHoldable {
     function renewHold(string calldata operationId, uint256 timeToExpiration) external returns (bool);
     function renewHoldWithExpirationDate(string calldata operationId, uint256 expiration) external returns (bool);
     function retrieveHoldData(string calldata operationId) external view returns (
+        address issuer,
         address from,
         address to,
         address notary,
@@ -79,17 +80,4 @@ interface IHoldable {
     event HoldRenewed(address indexed holdIssuer, string operationId, uint256 oldExpiration, uint256 newExpiration);
     event HoldOperatorAuthorized(address indexed operator, address indexed account);
     event RevokedHoldOperator(address indexed operator, address indexed account);
-
-    /**
-     * ERC20 Interface
-     */
-    function totalSupply() external view returns (uint256);
-    function balanceOf(address account) external view returns (uint256);
-    function transfer(address recipient, uint256 amount) external returns (bool);
-    function allowance(address owner, address spender) external view returns (uint256);
-    function approve(address spender, uint256 amount) external returns (bool);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-
-    event Transfer(address indexed from, address indexed to, uint256 value);
-    event Approval(address indexed owner, address indexed spender, uint256 value);
 }

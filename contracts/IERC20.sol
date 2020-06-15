@@ -17,6 +17,12 @@ interface IERC20 {
 
     function allowance(address owner, address spender) external view returns (uint256);
 
+    function name() external view returns (string memory);
+
+    function symbol() external view returns (string memory);
+
+    function decimals() external view returns (uint8);
+
     event Transfer(address indexed from, address indexed to, uint256 value);
 
     event Approval(address indexed owner, address indexed spender, uint256 value);
